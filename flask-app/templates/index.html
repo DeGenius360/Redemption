@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Categories</h1>
+  <ul>
+    {% for category in categories %}
+      <li>{{ category.name }}</li>
+      <ul>
+        {% for nominee in category.nominees %}
+          <li>{{ nominee.name }}</li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </ul>
+{% endblock %}

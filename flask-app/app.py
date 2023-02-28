@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user, current_user
+from flask_bootstrap import Bootstrap
 
 # Database
 import psycopg2 as psql
@@ -8,7 +9,24 @@ from psycopg2 import sql
 
 
 app = Flask(__name__)
+Bootstrap(app)
 
+
+login_manager = LoginManager()
+login_manager.login_view = 'index'
+login_manager.init_app(app)
+
+class User(UserMixin):
+    def __init__(self, email):
+        self.email = email
+
+
+@login_manager.user_loader
+def user_loader(email):
+    user = User(email)
+    user.id = email
+
+    return user
 
 
 # Database Configuration
@@ -34,11 +52,13 @@ except:
 
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # Display the list of categories and their nominees
-    categories = Category.query.all()
-    return render_template('index.html', categories=categories)
+    #categories = Category.query.all()
+    #if current_user.authenticated:
+        #return redirect(url_for('something'))
+    return render_template('index.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -60,20 +80,33 @@ def logout():
     # You can use Flask-Login to handle user sessions
 
 
+
+    return render_template('register.html')
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Handle user registration
-    if request.method == 'POST':
+    '''if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
         # Check if email is already registered
         # If it is, display an error message and prompt the user to try again
         # If it isn't, create a new user in the database and redirect to the login page
-    else:
-        return render_template('register.html')
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash('Email address already exists')
+            return render_template('register.html')
+        new_user = User(name=name, email=email, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        flash('Registration successful. Please login.')
+        return redirect(url_for('login'))
+    else: 
+    '''
+    return render_template('register.html')
 
-
+'''
 @app.route('/vote/<int:category_id>', methods=['GET', 'POST'])
 def vote(category_id):
     # Handle the voting process
@@ -86,6 +119,7 @@ def vote(category_id):
         category = Category.query.get(category_id)
         nominees = Nominee.query.filter_by(category_id=category_id).all()
         return render_template('vote.html', category=category, nominees=nominees)
+'''
 
 
 if __name__ == '__main__':
