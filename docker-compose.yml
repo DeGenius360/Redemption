@@ -1,0 +1,27 @@
+services:
+  flask-app:
+    platform: linux/amd64
+    build: ./flask-app
+    image: python:3.10
+    ports:
+      - "8080:8080"
+    depends_on:
+      psql-app:
+        condition: service_healthy
+  psql-app:
+    platform: linux/amd64
+    build: ./psql-app
+    image: postgres:14.5
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: postgres
+    volumes:
+      - psql-db:/var/lib/postgresql/data
+    healthcheck:
+      test:  ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  psql-db:
