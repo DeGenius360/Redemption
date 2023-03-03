@@ -79,8 +79,6 @@ def logout():
     # Handle user logout by ending the user session and redirecting to the login page
     # You can use Flask-Login to handle user sessions
 
-
-
     return render_template('register.html')
 
 @app.route('/register', methods=['GET', 'POST'])
