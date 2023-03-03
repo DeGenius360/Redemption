@@ -2,11 +2,11 @@ version: "3.9"
 
 services:
   flask-app:
-    build: .
+    platform: linux/amd64
+    build: ./flask-app
+    image: python:3.10
     ports:
       - "5000:5000"
-    volumes:
-      - .:/app
     depends_on:
       - psql-app
 

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+      Category Management
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="category">Add Category</label>
+          <input type="text" class="form-control" id="category" placeholder="Enter category name">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <div class="form-group mt-3">
+          <label for="remove">Remove Category</label>
+          <select class="form-control" id="remove">
+            <option>Select category to remove</option>
+            <option>Category 1</option>
+            <option>Category 2</option>
+            <option>Category 3</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-danger">Remove</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+  

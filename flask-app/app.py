@@ -118,6 +118,9 @@ def vote(category_id):
         nominees = Nominee.query.filter_by(category_id=category_id).all()
         return render_template('vote.html', category=category, nominees=nominees)
 '''
+@app.route('/category_management')
+def category_management():
+    return render_template('category.html')
 
 
 if __name__ == '__main__':
