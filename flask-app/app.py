@@ -49,7 +49,10 @@ except:
 
 # Define models for categories, nominees, votes, and users here
 
-
+userInfo = {
+    "firstname" : "Maxwell",
+    "lastname" :  "Agyemang"
+}
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -62,15 +65,21 @@ def index():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
-
-@app.route('/nominee_management', methods=['GET', 'POST'])
-def nominees():
-    return render_template('nominee_managment.html', titleAux="Nominee Management")
+    return render_template('register.html', titleAux="Register", userInfo=userInfo)
 
 @app.route('/category_management', methods=['GET', 'POST'])
 def category():
-    return render_template('category.html', titleAux="Category Management")
+    return render_template('category.html', titleAux="Category",userInfo=userInfo)
+
+@app.route('/nominee_management', methods=['GET', 'POST'])
+def nominees():
+    return render_template('nominee_managment.html', titleAux="Nominee Management",userInfo=userInfo)
+
+@app.route('/admin_tracking', methods=['GET', 'POST'])
+def admin():
+    return render_template('admin.html', titleAux="Admin Tracking",userInfo=userInfo)
+
+
 
 
 '''

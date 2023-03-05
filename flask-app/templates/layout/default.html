@@ -28,30 +28,82 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
 {% endif %} 
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
                 <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+                <div class="sidebar-brand-text mx-3"><span>UMEX</span></div>
             </a>
             <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-external-link-square-alt"></i>ADMIN TRACKING</a><a class="nav-link" href="#"><i class="fas fa-poll"></i>CATEGORY</a></li>
-                    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i>NOMINEE MANAGEMENT</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                    {%if 'Admin Tracking' == titleAux%}
+                    <li class="nav-item"><a class="nav-link" href="admin_tracking"><i class="fas fa-external-link-square-alt"></i>ADMIN TRACKING</span></a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="admin_tracking"><i class="fas fa-external-link-square-alt"></i>ADMIN TRACKING</span></a></li>
+                    {%endif%}
+                    
+                    {% if 'Category' == titleAux %}
+                    <li class="nav-item"><a class="nav-link" href="category_management"><i class="fas fa-poll"></i><span>CATEGORY</span></a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="category_management"><i class="fas fa-poll"></i>CATEGORY<span>CATEGORY</span></a></li>
+                    {%endif%}
+
+                    {%if 'Nominee Management' == titleAux%}
+                    <li class="nav-item"><a class="nav-link" href="nominee_management"><i class="fas fa-table"></i>NOMINEE MANAGEMENT</span></a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="nominee_management"><i class="fas fa-table"></i>NOMINEE MANAGEMENT</span></a></li>
+                    {%endif%}
+
+                    {%if 'Register' == titleAux %}
+                    <li class="nav-item"><a class="nav-link" href="register"><i class="far fa-user-circle"></i><span>Register</span></a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="register"><i class="far fa-user-circle"></i><span>Register</span></a></li>
+                    {%endif%}
+
                 </ul>
-
-
-
-
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <button class="btn btn-primary py-0" type="button">
+                                    <i class="fas fa-search">
+                                </i></button></div>
+                            </div>               
+                        </form>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="nav-link" aria-expanded="false" id="displayModeButton">
+                                    {% if displayMode is not none %}
+                                        {% if displayMode == true %}
+                                        <i class="fas fa-lightbulb fa-fw" id="displayModeIcon"></i></a>
+                                        {% else %}
+                                        <i class="fas fa-moon fa-fw" id="displayModeIcon"></i></a>
+                                        {% endif %} 
+                                    {% else %}
+                                        <i class="fas fa-moon fa-fw" id="displayModeIcon"></i></a>
+                                    {% endif %} 
+                                </div>
+                            </li>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>UMEX VOTING</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+      
+    {% block script %}
+    {% endblock %}
     <script src="../static/js/library/bootstrap.min.js"></script>
     <script src="../static/js/library/chart.min.js"></script>
     <script src="../static/js/bs-init.js"></script>
     <script src="../static/js/theme.js"></script>
-    <script src="../static/js/extension/notification.js"></script>
-    <script src="../static/js/extension/searchBar.js"></script>
-    <script src="../static/js/extension/darkmode.js"></script>
-    {% block script %}
-    {% endblock %}
+    
 </body>
 
 </html>
