@@ -34,11 +34,12 @@ except:
 
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # Display the list of categories and their nominees
     #categories = Category.query.all()
+    #if current_user.authenticated:
+        #return redirect(url_for('something'))
     return render_template('index.html')
 
 
