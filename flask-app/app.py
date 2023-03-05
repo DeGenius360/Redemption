@@ -35,12 +35,14 @@ except:
 
 
 @app.route('/')
+@app.route('/index')
 def index():
     # Display the list of categories and their nominees
-    categories = Category.query.all()
-    return render_template('index.html', categories=categories)
+    #categories = Category.query.all()
+    return render_template('index.html')
 
 
+'''
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     # Handle user authentication and login
@@ -87,6 +89,6 @@ def vote(category_id):
         nominees = Nominee.query.filter_by(category_id=category_id).all()
         return render_template('vote.html', category=category, nominees=nominees)
 
-
+'''
 if __name__ == '__main__':
     app.run(debug=True)
