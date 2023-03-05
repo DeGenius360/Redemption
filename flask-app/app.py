@@ -85,7 +85,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Handle user registration
-    '''if request.method == 'POST':
+    if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
@@ -103,7 +103,7 @@ def register():
         return redirect(url_for('login'))
     else: 
     '''
-    return render_template('register.html')
+   # return render_template('register.html')
 
 '''
 @app.route('/vote/<int:category_id>', methods=['GET', 'POST'])
@@ -119,10 +119,12 @@ def vote(category_id):
         nominees = Nominee.query.filter_by(category_id=category_id).all()
         return render_template('vote.html', category=category, nominees=nominees)
 '''
-@app.route('/category_management')
-def category_management():
-    return render_template('category.html')
+
+#@app.route('/category_management')
+#def category_management():
+    #return render_template('category.html')
 
 '''
 if __name__ == '__main__':
     app.run(debug=True)
+'''
