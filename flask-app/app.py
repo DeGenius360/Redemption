@@ -52,13 +52,25 @@ except:
 
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     # Display the list of categories and their nominees
     #categories = Category.query.all()
     #if current_user.authenticated:
         #return redirect(url_for('something'))
-    return render_template('index.html')
+    return render_template("index.html")
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
+
+@app.route('/nominee_management', methods=['GET', 'POST'])
+def nominees():
+    return render_template('nominee_managment.html', titleAux="Nominee Management")
+
+@app.route('/category_management', methods=['GET', 'POST'])
+def category():
+    return render_template('category.html', titleAux="Category Management")
 
 
 '''
@@ -124,7 +136,6 @@ def vote(category_id):
 #def category_management():
     #return render_template('category.html')
 
-'''
+
 if __name__ == '__main__':
-    app.run(debug=True)
-'''
+    app.run(debug=True, host='0.0.0.0', port=5000)

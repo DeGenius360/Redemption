@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" style="background: url(&quot;../static/img/background/business-2717066.jpg&quot;) center / cover;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>UMEX - {{titleAux}}</title>
+    <script src="../static/js/library/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="../static/css/Articles-Cards-images.css">
+    <link rel="stylesheet" href="../static/css/Team-Horizontal-icons.css">
+</head>
+
+<body class="bg-gradient-primary" style="background: transparent;">
+{% block content %}
+{% endblock %}
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Notification</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="notificationModalMessage">
+                    <p> &nbsp;</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/library/bootstrap.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+    <script src="../static/js/theme.js"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>

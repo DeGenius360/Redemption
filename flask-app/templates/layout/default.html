@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>UMEX - {{titleAux}}</title>
+    <script src="../static/js/library/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="../static/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../static/css/Articles-Cards-images.css">
+    <link rel="stylesheet" href="../static/css/Team-Horizontal-icons.css">
+    <link rel="stylesheet" href="../static/css/searchHighlight.css">
+</head>
+        
+        
+<body id="page-top">
+    {% if displayMode is not none %}
+    {% if displayMode == true %}
+    <div id="wrapper" style="filter: hue-rotate(165deg) invert(100%);">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="filter: grayscale(35%) saturate(24%);">
+    {% else %}
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+    {% endif %} 
+{% else %}
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+{% endif %} 
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+            </a>
+            <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-external-link-square-alt"></i>ADMIN TRACKING</a><a class="nav-link" href="#"><i class="fas fa-poll"></i>CATEGORY</a></li>
+                    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i>NOMINEE MANAGEMENT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                </ul>
+
+
+
+
+    <script src="../static/js/library/bootstrap.min.js"></script>
+    <script src="../static/js/library/chart.min.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+    <script src="../static/js/theme.js"></script>
+    <script src="../static/js/extension/notification.js"></script>
+    <script src="../static/js/extension/searchBar.js"></script>
+    <script src="../static/js/extension/darkmode.js"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>
