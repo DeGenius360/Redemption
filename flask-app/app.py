@@ -79,7 +79,9 @@ def nominees():
 def admin():
     return render_template('admin.html', titleAux="Admin Tracking",userInfo=userInfo)
 
-
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    return render_template('profile.html', titleAux="Profile",userInfo=userInfo)
 
 
 '''
