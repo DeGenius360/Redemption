@@ -73,7 +73,11 @@ def category():
 
 @app.route('/nominee_management', methods=['GET', 'POST'])
 def nominees():
-    return render_template('nominee_managment.html', titleAux="Nominee Management",userInfo=userInfo)
+    nomineeInfo = [    {        "id" : 1,       "name" : "Atoo",     "category" : "Best Lecturer",    "age": 23,  "Votes": 45,        "department": "Computer Science"    }, 
+                      {        "id" : 2,         "name" : "Barnes",   "category" : "Best Researcher",  "age": 22,  "Votes": 72,        "department": "Physics"    },  
+                          {        "id" : 3,      "name" : "Choi",    "category" : "Best Professor",   "age": 21,  "Votes": 63,        "department": "Chemistry"    }]
+
+    return render_template('nominee_managment.html', titleAux="Nominee Management",userInfo=userInfo,nomineeInfo=nomineeInfo)
 
 @app.route('/admin_tracking', methods=['GET', 'POST'])
 def admin():
