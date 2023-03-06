@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import login_user, login_required, logout_user, current_user
+import psycopg2
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user, current_user
 from flask_bootstrap import Bootstrap
@@ -65,11 +67,19 @@ def index():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+
     return render_template('register.html', titleAux="Register", userInfo=userInfo)
 
 @app.route('/category_management', methods=['GET', 'POST'])
 def category():
-    return render_template('category.html', titleAux="Category",userInfo=userInfo)
+    topInfo = {"selectedProject": 2}
+    categoryList = [
+        {"id": 1, "name": "Category A"},
+        {"id": 2, "name": "Category B"},
+        {"id": 3, "name": "Category C"},
+        {"id": 4, "name": "Category D"}
+    ] 
+    return render_template('category.html', titleAux="Category",userInfo=userInfo,topInfo=topInfo,categoryList=categoryList)
 
 @app.route('/nominee_management', methods=['GET', 'POST'])
 def nominees():
