@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>UMEX - {{titleAux}}</title>
+    <title>Projexpert - {{titleAux}}</title>
     <script src="../static/js/library/jquery-3.6.3.min.js"></script>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
@@ -13,10 +13,9 @@
     <link rel="stylesheet" href="../static/css/Team-Horizontal-icons.css">
     <link rel="stylesheet" href="../static/css/searchHighlight.css">
 </head>
-        
-        
+
 <body id="page-top">
-    {% if displayMode is not none %}
+{% if displayMode is not none %}
     {% if displayMode == true %}
     <div id="wrapper" style="filter: hue-rotate(165deg) invert(100%);">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="filter: grayscale(35%) saturate(24%);">
@@ -28,35 +27,38 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
 {% endif %} 
+        
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
-                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                <div class="sidebar-brand-text mx-3"><span>UMEX</span></div>
-            </a>
-            <hr class="sidebar-divider my-0">
+                    <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-ui-checks" style="font-size: 26px;">
+                            <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
+                        </svg></div>
+                    <div class="sidebar-brand-text mx-3"><span><strong>Projexpert</strong></span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    {%if 'Admin Tracking' == titleAux%}
-                    <li class="nav-item"><a class="nav-link" href="admin_tracking"><i class="fas fa-external-link-square-alt"></i>ADMIN TRACKING</span></a></li>
+                    {% if 'Admin Tracking' == titleAux %}
+                    <li class="nav-item"><a class="nav-link active" href="admin_tracking"><i class="fas fa-external-link-square-alt"></i><span>ADMIN TRACKING</span></a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="admin_tracking"><i class="fas fa-external-link-square-alt"></i>ADMIN TRACKING</span></a></li>
-                    {%endif%}
-                    
+                    <li class="nav-item"><a class="nav-link" href="admin_tracking"><i class="fas fa-external-link-square-alt"></i><span>ADMIN TRACKING</span></a></li>
+                    {% endif %}
+
                     {% if 'Category' == titleAux %}
-                    <li class="nav-item"><a class="nav-link" href="category_management"><i class="fas fa-poll"></i><span>CATEGORY</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="category_management"><i class="fas fa-poll"></i><span>CATEGORY MANAGEMENT</span></a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="category_management"><i class="fas fa-poll"></i>CATEGORY<span>CATEGORY</span></a></li>
-                    {%endif%}
+                    <li class="nav-item"><a class="nav-link" href="category_management"><i class="fas fa-poll"></i><span>CATEGORY MANAGEMENT</span></a></li>
+                    {% endif %}
 
-                    {%if 'Nominee Management' == titleAux%}
-                    <li class="nav-item"><a class="nav-link" href="nominee_management"><i class="fas fa-table"></i>NOMINEE MANAGEMENT</span></a></li>
+                    {% if 'Nominee Management' == titleAux %}
+                    <li class="nav-item"><a class="nav-link active" href="nominee_management"><i class="fas fa-table"></i><span>NOMINEE MANAGEMENT</span></a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="nominee_management"><i class="fas fa-table"></i>NOMINEE MANAGEMENT</span></a></li>
-                    {%endif%}
+                    <li class="nav-item"><a class="nav-link" href="nominee_management"><i class="fas fa-table"></i><span>NOMINEE MANAGEMENT</span></a></li>
+                    {% endif %}
 
-                    {%if 'Register' == titleAux %}
-                    <li class="nav-item"><a class="nav-link" href="register"><i class="far fa-user-circle"></i><span>Register</span></a></li>
+                    {% if 'Profile' == titleAux %}
+                    <li class="nav-item"><a class="nav-link active" href="profile"><i class="fas fa-user"></i><span>Profile</span></a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="register"><i class="far fa-user-circle"></i><span>Register</span></a></li>
-                    {%endif%}
+                    <li class="nav-item"><a class="nav-link" href="profile"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                    {% endif %}
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -65,14 +67,14 @@
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="container-fluid"><button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle me-3" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search" id="searchBarForm">
                             <div class="input-group">
-                                <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                <button class="btn btn-primary py-0" type="button">
-                                    <i class="fas fa-search">
-                                </i></button></div>
-                            </div>               
+                                <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." / id="searchBarInput">
+                                <button class="btn btn-primary py-0" type="button" id="searchBarButton">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </form>
                         <ul class="navbar-nav flex-nowrap ms-auto">
                             <li class="nav-item dropdown no-arrow mx-1">
@@ -89,21 +91,107 @@
                                     {% endif %} 
                                 </div>
                             </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" name="notificationNavItem">
+                                        {% if notificationCount is not none %}
+                                            <span class="badge bg-danger badge-counter" id="notificationCounter">{{notificationCount}}</span>
+                                        {% else %}
+                                            <span class="badge bg-danger badge-counter">0</span>
+                                        {% endif %}
+                                        <i class="fas fa-bell fa-fw"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in" style="max-height: 500px; overflow-y: scroll;" id="notificationDropDownList">
+                                        <h6 class="dropdown-header">Notification Center</h6>
+                                        <a class="dropdown-item text-center small text-gray-500">Double Click To Remove</a>
+                                            {% if notificationList is not none %}
+                                                {% for entry in notificationList %}
+                                                    <a class="dropdown-item d-flex align-items-center" id={{"Noti" + entry.notificationID|string}} name="notificationItem">
+                                                        <div class="me-3">
+                                                            <div class="bg-success icon-circle"><i class="fas fa-info-circle text-white"></i></div>
+                                                        </div>
+                                                        <div><span class="small text-gray-500">{{entry.recordDate}}</span>
+                                                            <p>{{entry.content}}</p>
+                                                        </div>
+                                                    </a>
+                                                {% endfor %}
+                                            {% else %}
+                                                <a class="dropdown-item d-flex align-items-center">
+                                                    <div class="me-3">
+                                                        <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                                    </div>
+                                                    <div><span class="small text-gray-500">N&#47;A</span>
+                                                        <p>You do not have any notification yet!</p>
+                                                    </div>
+                                                </a>
+                                            {% endif %}
+                                        <a class="dropdown-item text-center small text-gray-500" id="notificationEndElement">END</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"><span class="d-none d-lg-inline me-2 text-gray-600 small" id="topBarNameDisplay">{{userInfo.firstname|capitalize}} {{userInfo.lastname|capitalize}}</span><img class="border rounded-circle img-profile" src="../static/img/avatars/avatar.png"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>UMEX VOTING</span></div>
+                    <div class="text-center my-auto copyright"><span>CS261 Group 18 2023</span></div>
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-      
-    {% block script %}
+    
+    {% block modal %}
     {% endblock %}
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalNotification">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Notification</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="notificationModalMessage">
+                    <p> &nbsp;</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" tabindex="-1" id="searchResultModal">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Search Result</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="searchResultModalMessage">
+                    <p> &nbsp;</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+            </div>
+        </div>
+    </div>
+
     <script src="../static/js/library/bootstrap.min.js"></script>
     <script src="../static/js/library/chart.min.js"></script>
     <script src="../static/js/bs-init.js"></script>
     <script src="../static/js/theme.js"></script>
-    
+    <script src="../static/js/extension/notification.js"></script>
+    <script src="../static/js/extension/searchBar.js"></script>
+    <script src="../static/js/extension/darkmode.js"></script>
+    {% block script %}
+    {% endblock %}
 </body>
 
 </html>

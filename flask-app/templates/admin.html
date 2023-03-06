@@ -1,77 +1,83 @@
+{%extends "layout/default.html"%}
+{% block content%}
 
-{% extends "layout/default.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">{{titleAux}}</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" id="updateInfoButton"><i class="fas fa-sync fa-sm text-white-50"></i>&nbsp;Update Information</a>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">SELECT CATEGORY</button>
-                <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+
+
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">SELECT CATEGORY</button>
+                                <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                            </div>
+                            <header></header>
+                        </div>
+                        <div class="col-md-6"><button class="btn btn-primary" type="button">CLOSE POLL</button></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h1></h1>
+                    </div>
+                </div>
+                <h1 style="margin: 20px;">Category Summary</h1>
+                <div class="container">
+                    <header></header>
+                </div>
+                <div class="col">
+                    <div class="table-responsive" style="margin: 15px 15px 15px;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Column 1</th>
+                                    <th>Column 1</th>
+                                    <th>Column 1</th>
+                                    <th>Column 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cell 1</td>
+                                    <td>Cell 2</td>
+                                    <td>Cell 2</td>
+                                    <td>Cell 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Cell 3</td>
+                                    <td>Cell 4</td>
+                                    <td>Cell 4</td>
+                                    <td>Cell 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h1 style="margin: 12px;">Leading Nominees</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 offset-lg-0">
+                        <div class="d-flex visible"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Nominee 1&quot;,&quot;Nominee 2&quot;,&quot;Nominee 3&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Votes&quot;,&quot;backgroundColor&quot;:&quot;#4e73df&quot;,&quot;borderColor&quot;:&quot;#4e73df&quot;,&quot;data&quot;:[&quot;1100&quot;,&quot;1000&quot;,&quot;900&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;position&quot;:&quot;top&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}],&quot;yAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}]}}}"></canvas></div>
+                    </div>
+                </div>
             </div>
-            <header></header>
-        </div>
-        <div class="col-md-6"><button class="btn btn-primary" type="button">CLOSE POLL</button></div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h1></h1>
-        </div>
-    </div>
-    <h1 style="margin: 20px;">Category Summary</h1>
-    <div class="container">
-        <header></header>
-    </div>
-    <div class="col">
-        <div class="table-responsive" style="margin: 15px 15px 15px;">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Column 1</th>
-                        <th>Column 1</th>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                        <td>Cell 2</td>
-                        <td>Cell 2</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                        <td>Cell 4</td>
-                        <td>Cell 4</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h1 style="margin: 12px;">Leading Nominees</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-9 offset-lg-0">
-            <div class="d-flex visible"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Nominee 1&quot;,&quot;Nominee 2&quot;,&quot;Nominee 3&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Votes&quot;,&quot;backgroundColor&quot;:&quot;#4e73df&quot;,&quot;borderColor&quot;:&quot;#4e73df&quot;,&quot;data&quot;:[&quot;1100&quot;,&quot;1000&quot;,&quot;900&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;position&quot;:&quot;top&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}],&quot;yAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}]}}}"></canvas></div>
-        </div>
-    </div>
-    </div>
-        <footer class="bg-white sticky-footer"></footer>
+            <footer class="bg-white sticky-footer"></footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-</div>
-
-{% endblock %}
-{% block script%}
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/chart.min.js"></script>
-        <script src="assets/js/bs-init.js"></script>
-        <script src="assets/js/theme.js"></script>
-    
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    {%block script%}
+    {%endblock%}
+</body>
 
 {%endblock%}
