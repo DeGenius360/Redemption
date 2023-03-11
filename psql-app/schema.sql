@@ -1,3 +1,13 @@
+SELECT *
+FROM pg_extension;
+create extension if not exists pgcrypto;
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password text,
+    salt text
+);
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL
@@ -19,9 +29,4 @@ CREATE TABLE votes (
     FOREIGN KEY (nominee_id) REFERENCES nominees (id)
 );
 
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL
-);
+

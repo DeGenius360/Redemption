@@ -1,0 +1,28 @@
+{%extends "layout/authentication.html" %}    
+{%block content%}
+
+  <div class="container">
+    <h1 class="mt-4 mb-3">Test Database Connection</h1>
+    <p>Click the button below to test the database connection:</p>
+    <button type="button" class="btn btn-primary" id="test-btn">Test Connection</button>
+    <div id="test-results" class="mt-4"></div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#test-btn').on('click', function() {
+        $.ajax({
+          url: "{{ url_for('test.test_db_connection') }}",
+          type: 'GET',
+          success: function(data) {
+            $('#test-results').html('<div class="alert alert-success" role="alert">' + data.message + '</div>');
+          },
+          error: function(data) {
+            $('#test-results').html('<div class="alert alert-danger" role="alert">' + data.message + '</div>');
+          }
+        });
+      });
+    });
+  </script>
+
+{%endblock%}

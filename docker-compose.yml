@@ -15,8 +15,8 @@ services:
     environment:
       POSTGRES_PASSWORD: test
       POSTGRES_USER: postgres
-    volumes:
-      - pgdata-project2:/var/lib/postgresql/data/pgdata
+      PGDATA: /var/lib/postgresql/data/redemption/
+    
 
 volumes:
   pgdata-project2:

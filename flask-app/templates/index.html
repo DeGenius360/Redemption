@@ -1,4 +1,4 @@
-{%extends "layout/default.html" %}    
+{%extends "layout/authentication.html" %}    
 {%block content%}
     <div class="container" style="width: 550px;max-width: 95%;">
         <div class="row justify-content-center">
@@ -9,15 +9,22 @@
                             <div class="col-lg-12 col-xl-12 col-xxl-12">
                                 <div class="p-5">
                                     <div style="margin-bottom: 22px;"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                                            <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-ui-checks" style="font-size: 72px;color: var(--bs-warning);">
-                                                    <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2zm.854-3.646a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708l.646.647 1.646-1.647a.5.5 0 1 1 .708.708l-2 2zm0 8a.5.5 0 0 1-.708 0l-1-1a.5.5 0 0 1 .708-.708l.646.647 1.646-1.647a.5.5 0 0 1 .708.708l-2 2zM7 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm0-5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
-                                                </svg></div>
-                                            <div class="sidebar-brand-text mx-3"><span style="font-size: 36px;color: var(--bs-warning);"><strong>UMEX VOTINGX</strong></span></div>
+                                        <img src="../static/img/2.png" alt="Your Logo" style="width: 100px; height: 50px;"class="sidebar-brand-icon">
+                                            <div class="sidebar-brand-text mx-3"><span style="font-size: 36px;color: var(--bs-warning);"><strong>UMEX VOTING</strong></span></div>
                                         </a></div>
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
-                                    <form class="user" method="post">
+                                    {% with messages = get_flashed_messages() %}
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="alert alert-{{ message[0] }}" role="alert">
+                                                    {{ message[0] }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+                                    <form class="user" method="post" action="{{ url_for('loginresponse')}}">
                                         <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="login_email"></div>
                                         <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="login_password"></div>
                                         <div class="mb-3">
@@ -25,7 +32,7 @@
                                                 <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
                                             </div>
                                         </div>
-                                        <hr><button class="btn btn-primary d-block btn-user w-100" type="button" id="loginFormButton">Login</button>
+                                        <hr><button class="btn btn-primary d-block btn-user w-100" type="submit" name="loginFormButton">Login</button>
                                         <hr>
                                     </form>
                                     <div class="text-center"></div>
@@ -38,7 +45,5 @@
             </div>
         </div>
     </div>
-{% endblock %}
-{% block script %}
-<script src="../static/js/authentication/login.js"></script>
+
 {% endblock %}

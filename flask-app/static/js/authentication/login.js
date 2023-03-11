@@ -12,7 +12,7 @@ $(document).ready( function() {
             contentType: "application/json",
             data : JSON.stringify({
                         email: email,
-                        passwd: passwd
+                        password: passwd
                     }),  
             dataType: "json",
             // Communication to the server success
