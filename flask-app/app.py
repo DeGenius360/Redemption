@@ -6,6 +6,7 @@ from flask_bootstrap import Bootstrap
 import bcrypt
 import os
 os.urandom(16)
+from flask_socketio import SocketIO, emit
 
 # Database
 import psycopg2 as psql
@@ -15,6 +16,7 @@ from psycopg2 import sql
 app = Flask(__name__)
 app.secret_key = 'my-secret-key'
 Bootstrap(app)
+socketio = SocketIO(app)
 
 login_manager = LoginManager()
 login_manager.login_view = 'index'
@@ -59,7 +61,6 @@ userInfo = {
 }
 
 
-
 @app.route("/", methods=['GET', 'POST'])
 def index():
     #get the message from the session if it exists
@@ -67,6 +68,15 @@ def index():
     if current_user.is_authenticated:
         return redirect(url_for('admin'))
     return render_template("index.html",userInfo=userInfo, message=message)
+
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client disconnected')
+
 
 @app.route('/loginresponse', methods=['GET','POST'])
 def loginresponse():
@@ -179,7 +189,52 @@ def nominees():
 @app.route('/admin_tracking', methods=['GET', 'POST'])
 @login_required
 def admin():
-    return render_template('admin.html', titleAux="Admin Tracking",userInfo=userInfo)
+    #send the initial category list to the client side
+    category_list = handle_category_list()
+
+    #cur.execute(categoryCountQuery) 
+    #count = cur.fecthone()
+
+    @socketio.on('connect')
+    def on_connect():
+        emit('fetch_category_list') #emit a message to the client side to fetch the category_list
+    
+    @socketio.on('get_category_count')
+    def on_get_category_count():
+        categoryCountQuery = '''
+        SELECT COUNT(c.id) from categories c;
+        '''
+        cur.execute(categoryCountQuery)
+        count = cur.fetchone()
+        emit('category_count', count[0]) #emit the category back to the client
+
+        # get the category count and pass it to the template
+    categoryCountQuery = '''
+    SELECT COUNT(c.id) from categories c;
+    '''
+    cur.execute(categoryCountQuery)
+    count = cur.fetchone()[0]
+
+    return render_template('admin.html', titleAux="Admin Tracking",userInfo=userInfo, category_list=category_list,category_count=count)
+
+@socketio.on('update_category_list')
+def handle_category_list():
+    selectCategoriesListQuery = '''
+    SELECT c.id, c.name from categories c
+    '''
+    cur.execute(selectCategoriesListQuery)
+    category_list_data = cur.fetchall()
+    # extract the results
+    category_list = []
+    for category in category_list_data:
+        topInfo = {
+            "id": category[0],
+            "name": category[1]
+        }
+        category_list.append(topInfo)
+
+    # send the category_list to the client-side
+    return category_list
 
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
@@ -187,7 +242,7 @@ def profile():
     return render_template('profile.html', titleAux="Profile",userInfo=userInfo)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    socketio.run(app)
 '''
 @app.route('/login', methods=['GET', 'POST'])
 def login():

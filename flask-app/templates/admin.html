@@ -13,10 +13,26 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">SELECT CATEGORY</button>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">SELECT CATEGORY</button>
+                                <div class="dropdown-menu">
+                                        {%for entry in category_list %}                                    
+                                            <option value="{{entry.id}}">{{entry.name}}</option>                                       
+                                        {% endfor %}
+                                </div>
                             </div>
-                            <header></header>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span class="text-info" style="color: #f6c23e;">CATEGORY COUNT</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>{{ category_count }}</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="far fa-clock fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6"><button class="btn btn-primary" type="button">CLOSE POLL</button></div>
                     </div>
@@ -72,10 +88,11 @@
             <footer class="bg-white sticky-footer"></footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="../static/js/bs-init.js"></script>
+    <script src="../static/js/library/chart.min.js"></script>
+    <script src="../static/js/theme.js"></script>
+    <script src="../static/js/management/admin.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     {%block script%}
     {%endblock%}
 </body>
